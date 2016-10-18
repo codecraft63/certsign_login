@@ -17,8 +17,7 @@ class Encryptor
      */
     public static function encrypt(string $text, string $key): string
     {
-        $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
-        $cipher_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+        list($cipher, $cipher_size) = self::getCipher();
         $iv = substr($key, 0, $cipher_size);
 
         mcrypt_generic_init($cipher, $key, $iv);
@@ -26,8 +25,7 @@ class Encryptor
         $encrypted_text = mcrypt_generic($cipher, $text);
         $encrypted_text = str_replace("certplus", "\\+", str_replace("(\r\n|\n)", "", $encrypted_text));
         $encrypted_text = self::pkcs5_pad($encrypted_text, $cipher_size);
-        mcrypt_generic_deinit($cipher);
-        mcrypt_module_close($cipher);
+        self::finalizeCipher($cipher);
 
         return $encrypted_text;
     }
