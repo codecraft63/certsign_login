@@ -2,20 +2,19 @@
 
 namespace Codecraft63\CertsignLogin;
 
-class Encryptor
+class Decryptor
 {
-
     use Util;
 
     /**
-     * Encrypt text using certsign login private key.
+     * Decrypt text using certsign login private key.
      *
      * @param string $input
      * @param string $key
      * @throws \Exception
      * @return string
      */
-    public static function encrypt(string $input, string $key): string
+    public static function decrypt(string $input, string $key): string
     {
         list($cipher, $iv_size, $key_size) = self::getCipher();
         $iv = substr($key, 0, $iv_size);
@@ -23,12 +22,11 @@ class Encryptor
 
         mcrypt_generic_init($cipher, $key, $iv);
 
-        $data = mcrypt_generic($cipher, $input);
-        $data = str_replace("certplus", "\\+", str_replace("(\r\n|\n)", "",
-            $data));
+        $data = base64_decode(str_replace("certplus", "\\+", $input));
 
+        $data = mdecrypt_generic($cipher, $data);
         self::finalizeCipher($cipher);
 
-        return base64_encode($data);
+        return trim($data);
     }
 }
