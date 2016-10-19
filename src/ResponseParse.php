@@ -23,7 +23,7 @@ class ResponseParse
         return $this->response[$name];
     }
 
-    private function parse(string $response)
+    private function parse(string $response): array
     {
         preg_match('/CertificadoBean : (.+)/', $response, $matches);
 

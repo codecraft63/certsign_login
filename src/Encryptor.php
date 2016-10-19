@@ -17,15 +17,14 @@ class Encryptor
      */
     public static function encrypt(string $input, string $key): string
     {
-        list($cipher, $iv_size, $key_size) = self::getCipher();
+        list($cipher, $iv_size) = self::getCipher();
         $iv = substr($key, 0, $iv_size);
         $key = substr($key, 0, $iv_size);
 
         mcrypt_generic_init($cipher, $key, $iv);
 
         $data = mcrypt_generic($cipher, $input);
-        $data = str_replace("certplus", "\\+", str_replace("(\r\n|\n)", "",
-            $data));
+        $data = str_replace("certplus", "\\+", str_replace("(\r\n|\n)", "", $data));
 
         self::finalizeCipher($cipher);
 
