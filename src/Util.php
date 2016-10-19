@@ -4,7 +4,7 @@ namespace Codecraft63\CertsignLogin;
 
 trait Util
 {
-    private static function pkcs5_pad(string $text, $blockSize):string
+    private static function pkcs5Pad(string $text, $blockSize):string
     {
         $pad = $blockSize - (strlen($text) % $blockSize);
         return $text . str_repeat(chr($pad), $pad);

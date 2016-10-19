@@ -2,7 +2,6 @@
 
 namespace Codecraft63\CertsignLogin;
 
-
 class Decrypto
 {
     use Util;
@@ -24,7 +23,7 @@ class Decrypto
         mcrypt_generic_init($cipher, $key, $iv);
 
         $text = base64_decode(str_replace("certplus", "\\+", $text));
-        $text = self::pkcs5_pad($text, $cipher_size);
+        $text = self::pkcs5Pad($text, $cipher_size);
 
         $decrypted_text = mdecrypt_generic($cipher, $text);
         self::finalizeCipher($cipher);

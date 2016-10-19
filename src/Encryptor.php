@@ -24,7 +24,7 @@ class Encryptor
 
         $encrypted_text = mcrypt_generic($cipher, $text);
         $encrypted_text = str_replace("certplus", "\\+", str_replace("(\r\n|\n)", "", $encrypted_text));
-        $encrypted_text = self::pkcs5_pad($encrypted_text, $cipher_size);
+        $encrypted_text = self::pkcs5Pad($encrypted_text, $cipher_size);
         self::finalizeCipher($cipher);
 
         return $encrypted_text;
