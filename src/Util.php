@@ -4,7 +4,7 @@ namespace Codecraft63\CertsignLogin;
 
 trait Util
 {
-    private static function pkcs5_pad(string $text, \integer $blockSize): string
+    private static function pkcs5_pad(string $text, $blockSize):string
     {
         $pad = $blockSize - (strlen($text) % $blockSize);
         return $text . str_repeat(chr($pad), $pad);
@@ -18,7 +18,7 @@ trait Util
         return [$cipher, $cipher_size];
     }
 
-    private static function finalizeCipher($cipher) : null
+    private static function finalizeCipher($cipher)
     {
         mcrypt_generic_deinit($cipher);
         mcrypt_module_close($cipher);

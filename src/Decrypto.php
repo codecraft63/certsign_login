@@ -19,6 +19,7 @@ class Decrypto
     {
         list($cipher, $cipher_size) = self::getCipher();
         $iv = substr($key, 0, $cipher_size);
+        $key = substr($key, 0, $cipher_size);
 
         mcrypt_generic_init($cipher, $key, $iv);
 
@@ -28,6 +29,6 @@ class Decrypto
         $decrypted_text = mdecrypt_generic($cipher, $text);
         self::finalizeCipher($cipher);
 
-        return $decrypted_text;
+        return trim($decrypted_text);
     }
 }
