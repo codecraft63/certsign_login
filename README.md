@@ -20,9 +20,28 @@ $ composer require codecraft63/certsign_login
 
 ## Usage
 
+Para descriptografar os dados retornados pela Certisign Login, use o seguinte
+código:
+
 ``` php
-$skeleton = new Codecraft63\CertsignLogin();
-echo $skeleton->echoPhrase('Hello, League!');
+use Codecraft63\CertsignLogin\{Decryptor, ResponseParse};
+
+$private_key = '__MY_PRIVATE_KEY_STRING__';
+
+$decrypted_string = Decryptor::decrypt($encrypted_data, $private_key);
+$decrypted_object = new ResponseParse($decrypted_string);
+
+print $decrypted_objec->nome();
+print $decrypted_objec->email();
+```
+Apesar de não haver necessidade de criptografar informações para usar o Certisign Login, a classe para tal funcionalidade também está disponível.
+
+``` php
+use Codecraft63\CertsignLogin\Encryptor;
+
+$private_key = '__MY_PRIVATE_KEY_STRING__';
+
+$encrypted_data = Encryptor::encrypt($plain_text_data, $private_key);
 ```
 
 ## Change log
