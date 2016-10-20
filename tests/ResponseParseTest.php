@@ -12,4 +12,10 @@ class ResponseParseTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('AC Certisign RFB G4', $obj->emissor());
         $this->assertSame('institucional@fioprev.org.br', $obj->email());
     }
+
+    public function testMethodNotExist()
+    {
+        $obj = new ResponseParse(TEST);
+        $this->assertSame(null, $obj->testNotFound());
+    }
 }
