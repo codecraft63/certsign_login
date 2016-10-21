@@ -14,6 +14,11 @@ class ResponseParse
         $this->response = $this->parse($response);
     }
 
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
     public function __call($name, $args)
     {
         if (!isset($this->response[$name])) {
@@ -23,9 +28,9 @@ class ResponseParse
         return $this->response[$name];
     }
 
-    private function parse(string $response): array
+    private function parse(string $response)
     {
-        preg_match('/CertificadoBean : (.+)/', $response, $matches);
+        preg_match('/CertificadoBean : (.+\})/', $response, $matches);
 
         $data = str_replace("'", "\"", $matches[1]);
 
