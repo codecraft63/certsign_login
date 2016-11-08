@@ -31,8 +31,8 @@ $private_key = '__MY_PRIVATE_KEY_STRING__';
 $decrypted_string = Decryptor::decrypt($encrypted_data, $private_key);
 $decrypted_object = new ResponseParse($decrypted_string);
 
-print $decrypted_objec->nome();
-print $decrypted_objec->email();
+print $decrypted_object->nome();
+print $decrypted_object->email();
 ```
 Apesar de não haver necessidade de criptografar informações para usar o Certisign Login, a classe para tal funcionalidade também está disponível.
 
