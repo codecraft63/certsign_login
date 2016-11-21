@@ -60,11 +60,12 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details
 
 ## Security
 
-If you discover any security related issues, please email ramon@codecraf63.com instead of using the issue tracker.
+If you discover any security related issues, please email run-forest-run@codecraf63.com instead of using the issue tracker.
 
 ## Credits
 
-- [Ramon Soares][link-author]
+- [Ramon Soares][link-author-ramon]
+- [Pedro Faria][link-author-pedro]
 - [All Contributors][link-contributors]
 
 ## License
@@ -83,5 +84,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-scrutinizer]: https://scrutinizer-ci.com/g/codecraft63/certsign_login/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/codecraft63/certsign_login
 [link-downloads]: https://packagist.org/packages/codecraft63/certsign_login
-[link-author]: https://github.com/ramon
+[link-author-ramon]: https://github.com/ramon
+[link-author-pedro]: https://github.com/pedrofaria
 [link-contributors]: ../../contributors
